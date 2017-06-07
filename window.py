@@ -1,18 +1,27 @@
 from gi.repository import Gdk
 
-def position(pos):
+def position(startpos, endpos):
     window, screen = active_window()
     window.unmaximize()
     window.set_shadow_width(0, 0, 0, 0)
-    print screen.get_monitor_workarea(screen.get_monitor_at_window(window))
+    workarea = screen.get_monitor_workarea(screen.get_monitor_at_window(window))
 
     offx, offy = offsets(window)
-    w, h = (500, 500)
+    w, h = (workarea.width / 4, workarea.height / 3)
+
+    pos = (
+        min(startpos[0], endpos[0]),
+        min(startpos[1], endpos[1])
+    )
+    dims = (
+        max(abs(endpos[0] - startpos[0]) + 1, 1),
+        max(abs(endpos[1] - startpos[1]) + 1, 1)
+    )
     window.move_resize(
         pos[1] * w,
         pos[0] * h,
-        w - (offx * 2),
-        h - (offx + offy)
+        w * dims[1] - (offx * 2),
+        h * dims[0]- (offx + offy)
     )
 
 def active_window():
