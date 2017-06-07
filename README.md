@@ -2,6 +2,8 @@
 
 Versatile, mouse-free window tiling for X11.
 
+![lol](https://user-images.githubusercontent.com/5866348/26905369-089db4d4-4bb5-11e7-90a8-96e39f278f1c.gif)
+
 ## Grid System
 
 The grid system divides your screen into 12 sections
@@ -24,6 +26,9 @@ You can snap your window to any rectangle, of any arbitrary size, on this grid b
 | x | x |      x      | x |
 
 
+Which looks like
+
+![screenshot from 2017-06-07 18-50-28](https://user-images.githubusercontent.com/5866348/26905371-0b657a26-4bb5-11e7-9e0f-b3a56f5802a5.png)
 
 
 ## Requirements
