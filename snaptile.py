@@ -1,22 +1,53 @@
 import signal
 from Xlib import display, X
 from Xlib.keysymdef import latin1
+from functools import reduce
 
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, GObject  # noqa
-from window import position, active_window
+from window import position
 
 display = display.Display()
 root = display.screen().root
 root.change_attributes(event_mask=X.KeyPressMask)
 
+keymap = [
+    ['Q', 'W', 'E', 'R'],
+    ['A', 'S', 'D', 'F'],
+    ['Z', 'X', 'C', 'V']
+]
+
+def keycode(key):
+    return display.keysym_to_keycode(
+        getattr(
+            latin1,
+            'XK_{}'.format(key)
+        )
+    )
+
+def get_posmap(keymap):
+    posmap = {}
+    for i, row in enumerate(keymap):
+        for j, key in enumerate(row):
+            posmap[keycode(key)] = (i, j)
+    return posmap
+
+
+posmap = get_posmap(keymap)
+
 def initkeys():
-    initkey(latin1.XK_A)
+    return map(
+        lambda key: initkey(
+            keycode(key)
+        ),
+        reduce(lambda x, y: x + y, keymap)
+    )
+
 
 def initkey(keycode):
     root.grab_key(
-        display.keysym_to_keycode(keycode),
+        keycode,
         X.ControlMask | X.Mod1Mask,
         1,
         X.GrabModeAsync,
@@ -24,33 +55,27 @@ def initkey(keycode):
     )
 
     root.grab_key(
-        display.keysym_to_keycode(keycode),
+        keycode,
         X.ControlMask | X.Mod1Mask | X.Mod2Mask,
         1,
         X.GrabModeAsync,
         X.GrabModeAsync
     )
+    return keycode
 
-def _check_event(source, condition, handle=None):
+def checkevt(source, condition, handle=None):
     """ Check keyboard event has all the right buttons pressed. """
     handle = handle or root.display
     for _ in range(0, handle.pending_events()):
         event = handle.next_event()
         if event.type == X.KeyPress:
-            _handle_event('lol')
+            handleevt(event.detail)
     return True
 
-def _handle_event(keypos):
+def handleevt(key):
     position(
-        active_window(),
-        {
-            'x1': 0,
-            'y1': 0,
-            'w': 500,
-            'h': 500
-        }
+        posmap[key],
     )
-    print keypos
 
 
 print('Snaptile running. Press CTRL+C to cancel.')
@@ -60,7 +85,7 @@ if __name__ == '__main__':
     signal.signal(signal.SIGINT, signal.SIG_DFL)
     for event in range(0, root.display.pending_events()):
         root.display.next_event()
-    GObject.io_add_watch(root.display, GObject.IO_IN, _check_event)
+    GObject.io_add_watch(root.display, GObject.IO_IN, checkevt)
     Gtk.main()
 
 

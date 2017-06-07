@@ -1,15 +1,18 @@
 from gi.repository import Gdk
 
-def position(window, config):
+def position(pos):
+    window, screen = active_window()
     window.unmaximize()
-    window.set_shadow_width(0,0,0,0)
+    window.set_shadow_width(0, 0, 0, 0)
+    print screen.get_monitor_workarea(screen.get_monitor_at_window(window))
 
     offx, offy = offsets(window)
+    w, h = (500, 500)
     window.move_resize(
-        config['x1'],
-        config['y1'],
-        config['w'] - (offx * 2),
-        config['h'] - (offx + offy)
+        pos[1] * w,
+        pos[0] * h,
+        w - (offx * 2),
+        h - (offx + offy)
     )
 
 def active_window():
@@ -19,7 +22,7 @@ def active_window():
     if no_window(screen, window):
         return None
 
-    return window
+    return (window, screen)
 
 
 def offsets(window):
