@@ -1,0 +1,4 @@
+X protocol error:
+<class 'Xlib.error.BadAccess'>: code = 10, resource_id = 529, sequence_number = 14, major_opcode = 33, minor_opcode = 0
+X protocol error:
+<class 'Xlib.error.BadAccess'>: code = 10, resource_id = 529, sequence_number = 15, major_opcode = 33, minor_opcode = 0
