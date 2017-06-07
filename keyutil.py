@@ -3,13 +3,16 @@ from functools import reduce
 from Xlib import X
 
 def get_posmap(keymap, disp):
+
     posmap = {}
     for i, row in enumerate(keymap):
         for j, key in enumerate(row):
             posmap[keycode(key, disp)] = (i, j)
+
     return posmap
 
 def initkeys(keymap, disp, root):
+
     return [
         initkey(
             keycode(key, disp),
