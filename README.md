@@ -30,6 +30,17 @@ Which looks like
 
 ![screenshot from 2017-06-07 18-50-28](https://user-images.githubusercontent.com/5866348/26905371-0b657a26-4bb5-11e7-9e0f-b3a56f5802a5.png)
 
+The two keys only needs to "span" a rectangle. For example:
+
+| x | x |x | x |
+|--|--|--|--|
+| x | + | <kbd>D</kbd>| x |
+| x | <kbd>X</kbd> |      +      | x |
+
+which looks like
+
+![screenshot from 2017-06-07 22-55-56](https://user-images.githubusercontent.com/5866348/26910417-b381baca-4bd4-11e7-9ff7-fff9262743e8.png)
+
 
 ## Requirements
 * Python3
