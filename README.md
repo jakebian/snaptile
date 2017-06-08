@@ -32,6 +32,8 @@ Which looks like
 
 The two keys only needs to "span" a rectangle. For example:
 
+<kbd>ctl</kbd> + <kbd>alt</kbd> + <kbd>X</kbd> + <kbd>D</kbd>
+
 | x | x |x | x |
 |--|--|--|--|
 | x | + | <kbd>D</kbd>| x |
