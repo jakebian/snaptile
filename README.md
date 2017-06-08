@@ -40,9 +40,9 @@ Which looks like
 ## Installation on Ubuntu
 ```bash
 $ sudo apt-get install git python3-gi python3-xlib
-$ cd <place-you-want-to-store-pygrid>
-$ git clone https://github.com/mjs7231/pygrid.git
-$ cd pygrid && ./pygrid.py
+$ cd <place-you-want-to-store-snaptile>
+$ git clone https://github.com/jakebian/snaptile.git
+$ cd snaptile && ./snaptile.py
 ```
 
 To start at boot, just add a script to *Startup Applications* invoking the python script
