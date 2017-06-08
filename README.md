@@ -51,12 +51,33 @@ which looks like
 * python3-xlib
 
 ## Installation on Ubuntu
+
+Go to a directory you want to store snaptile:
 ```bash
-$ sudo apt-get install git python3-gi python3-xlib
-$ cd <place-you-want-to-store-snaptile>
-$ git clone https://github.com/jakebian/snaptile.git
-$ cd snaptile && ./snaptile.py
+cd <place-you-want-to-store-snaptile>
 ```
+
+Install and run:
+```bash
+sudo apt-get install git python3-gi python3-xlib
+git clone https://github.com/jakebian/snaptile.git
+cd snaptile && ./snaptile.py
+```
+
+## Instalation on Arch / Manjaro
+Go to a directory you want to store snaptile:
+```bash
+cd <place-you-want-to-store-snaptile>
+```
+
+Install and run:
+```bash
+sudo pacman -S git python-gobject python-xlib
+git clone https://github.com/jakebian/snaptile.git
+cd snaptile && ./snaptile.py
+```
+
+## Start at boot
 
 To start at boot, just add a script to *Startup Applications* invoking the python script
 ```bash
