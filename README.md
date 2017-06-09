@@ -64,17 +64,12 @@ git clone https://github.com/jakebian/snaptile.git
 cd snaptile && ./snaptile.py
 ```
 
-## Instalation on Arch / Manjaro
-Go to a directory you want to store snaptile:
-```bash
-cd <place-you-want-to-store-snaptile>
-```
+## Installation on Arch / Manjaro
 
 Install and run:
 ```bash
-sudo pacman -S git python-gobject python-xlib
-git clone https://github.com/jakebian/snaptile.git
-cd snaptile && ./snaptile.py
+yaourt snaptile-git
+snaptile
 ```
 
 ## Install on Fedora
