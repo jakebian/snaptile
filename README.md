@@ -50,7 +50,9 @@ which looks like
 * python3-gi
 * python3-xlib
 
-## Installation on Ubuntu
+## Installation Guides
+
+### Install on Ubuntu
 
 Go to a directory you want to store snaptile:
 ```bash
@@ -64,7 +66,7 @@ git clone https://github.com/jakebian/snaptile.git
 cd snaptile && ./snaptile.py
 ```
 
-## Installation on Arch / Manjaro
+### Install on Arch / Manjaro
 
 Install and run:
 ```bash
@@ -72,7 +74,7 @@ yaourt snaptile-git
 snaptile
 ```
 
-## Install on Fedora
+### Install on Fedora
 Go to a directory you want to store snaptile:
 ```bash
 cd <place-you-want-to-store-snaptile>
