@@ -68,6 +68,8 @@ cd snaptile && ./snaptile.py
 
 ### Install on Arch / Manjaro
 
+The snaptile-git arch linux packaged is created & maintained by [@madnight](https://github.com/madnight).
+
 Install and run:
 ```bash
 yaourt snaptile-git
