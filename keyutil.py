@@ -11,32 +11,41 @@ def get_posmap(keymap, disp):
 
     return posmap
 
-def initkeys(keymap, disp, root):
+def initkeys(keymap, disp, root, mask=None):
 
     return [
         initkey(
             keycode(key, disp),
-            root
+            root,
+            mask
         ) for key in reduce(lambda x, y: x + y, keymap)
     ]
 
-def initkey(code, root):
+def initkey(code, root, mask=None):
 
-    root.grab_key(
-        code,
-        X.ControlMask | X.Mod1Mask,
-        1,
-        X.GrabModeAsync,
-        X.GrabModeAsync
-    )
-
-    root.grab_key(
-        code,
-        X.ControlMask | X.Mod1Mask | X.Mod2Mask,
-        1,
-        X.GrabModeAsync,
-        X.GrabModeAsync
-    )
+    if mask == 'Windows':
+        root.grab_key(
+            code,
+            X.Mod4Mask,
+            1,
+            X.GrabModeAsync,
+            X.GrabModeAsync
+        )
+    else:
+        root.grab_key(
+            code,
+            X.ControlMask | X.Mod1Mask,
+            1,
+            X.GrabModeAsync,
+            X.GrabModeAsync
+        )
+        root.grab_key(
+            code,
+            X.ControlMask | X.Mod1Mask | X.Mod2Mask,
+            1,
+            X.GrabModeAsync,
+            X.GrabModeAsync
+        )
 
     return code
 

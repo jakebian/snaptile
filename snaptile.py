@@ -2,6 +2,8 @@
 
 from __future__ import print_function
 
+import sys, getopt
+
 import signal
 from Xlib import display, X
 
@@ -32,11 +34,35 @@ def global_inital_states():
         get_posmap(keymap, displ)
     )
 
-disp, root, lastkey_state, posmap = global_inital_states()
+global disp, root, lastkey_state, posmap;
 
 
 def run():
-    initkeys(keymap, disp, root)
+    mask = None
+
+    opts, args = getopt.getopt(sys.argv, "hdW")
+    
+    for opt in args:
+        if opt == '-h':
+            print ('Snaptyle.py')
+            print ('-d expanded dual-monitor keybinds')
+            print ('-W use Windows key')
+            print ('-h this help text')
+            sys.exit()
+        elif opt == '-d':
+            global keymap;
+            keymap = [
+                ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I'],
+                ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K'],
+                ['Z', 'X', 'C', 'V', 'B', 'N', 'M', 'comma']
+            ]
+        elif opt == '-W':
+            mask = 'Windows'
+
+    global disp, root, lastkey_state, posmap
+    disp, root, lastkey_state, posmap = global_inital_states()
+
+    initkeys(keymap, disp, root, mask)
     for _ in range(0, root.display.pending_events()):
         root.display.next_event()
     GObject.io_add_watch(root.display, GObject.IO_IN, checkevt)
