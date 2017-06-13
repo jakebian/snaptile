@@ -44,7 +44,7 @@ def run():
     
     for opt in args:
         if opt == '-h':
-            print ('Snaptyle.py')
+            print ('Snaptile.py')
             print ('-d expanded dual-monitor keybinds')
             print ('-W use Windows key')
             print ('-h this help text')

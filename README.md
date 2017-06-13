@@ -92,7 +92,7 @@ cd snaptile && ./snaptile.py
 ## Options
 ```bash
 ./snaptile.py -h
-Snaptyle.py
+Snaptile.py
 -d expanded dual-monitor keybinds
 -W use Windows key
 -h this help text
