@@ -89,6 +89,14 @@ git clone https://github.com/jakebian/snaptile.git
 cd snaptile && ./snaptile.py
 ```
 
+## Options
+```bash
+./snaptile.py -h
+Snaptile.py
+-d expanded dual-monitor keybinds
+-W use Windows key
+-h this help text
+```
 ## Start at boot
 
 To start at boot, just add a script to *Startup Applications* invoking the python script
