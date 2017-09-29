@@ -49,6 +49,7 @@ which looks like
 * X11-based desktop
 * python3-gi
 * python3-xlib
+* PySQL2 (not required, for automatically detecting keyboard layout)
 
 ## Installation Guides
 
