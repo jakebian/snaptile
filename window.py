@@ -17,8 +17,12 @@ def position(startpos, endpos):
         max(abs(endpos[0] - startpos[0]) + 1, 1),
         max(abs(endpos[1] - startpos[1]) + 1, 1)
     )
+
+
+    multiscreen_offset = get_multi_screen_offset(screen, window)
+
     window.move_resize(
-        pos[1] * w,
+        pos[1] * w + multiscreen_offset,
         pos[0] * h,
         w * dims[1] - (offx * 2),
         h * dims[0]- (offx + offy)
@@ -33,6 +37,10 @@ def active_window():
 
     return (window, screen)
 
+def get_multi_screen_offset(screen,window):
+    monitor = screen.get_monitor_at_window(window)
+    monitor_geometry = screen.get_monitor_geometry(monitor)
+    return monitor_geometry.x
 
 def offsets(window):
     origin = window.get_origin()
